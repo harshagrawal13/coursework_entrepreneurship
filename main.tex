@@ -1,0 +1,354 @@
+% Header: Here are all packages used and some additional definitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[onehalfspacing]{setspace}
+\usepackage{graphicx} % zum Einbinden von Graphiken
+\usepackage[table]{xcolor} % für farbige Tabellen
+\usepackage[justification=centering]{caption} % Center align all captions
+\usepackage{booktabs} % für professionelle Tabellen
+\usepackage{longtable} % für mehrseitige Tabellen
+\usepackage[breaklinks=true,colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref} % f. Referenzen
+\usepackage{amsmath,amsthm,amssymb} % Mathematik Umgebung 
+% \usepackage{icomma} % Not needed for English (was for German comma handling)
+\usepackage[english]{babel} % English language settings
+\usepackage[T1]{fontenc}    % andere Schriftsatzkodierung für richtige Silbentrennung bei Umlauten
+\usepackage{textcomp} % für Trademark-Symbole
+\usepackage{csquotes} % Empfohlen für biblatex mit babel/polyglossia
+\usepackage[per-mode = symbol]{siunitx} % Bessere Einheiten
+\usepackage{placeins} % Definiert den Befehl "\FloatBarrier", der die Ausgabe der davor eingebundenen Bilder erzwingt, befor der Text weiter geht. (Mit vorsicht zu verwenden)
+\usepackage[natbib,abbreviate=true,doi=false,style=numeric-comp,giveninits=true,sorting=none]{biblatex} % Modernes Paket zur Erzeugung von Bibliografien (benötigt biber!)
+
+\addbibresource{references.bib} % Ort der .bib Datei, die die Datenbank für Literatur/Referenzen enthält.
+
+\graphicspath{{images/}}
+
+\DeclareSIUnit{\dBm}{dBm}
+\DeclareSIUnit[per-mode=reciprocal]\WN{\per\centi\meter}
+
+% --- Define 3 Simple Muted Colors ---
+\definecolor{astm_color}{RGB}{225, 235, 245}  % Muted Blue-Grey for ASTM
+\definecolor{iso_color}{RGB}{240, 250, 240}   % Muted Sage Green for ISO
+\definecolor{usp_color}{RGB}{250, 240, 235}   % Muted Warm Rose for USP
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%
+\title{\includegraphics[width=5cm]{icl} \\ Imperial College London, Bioengineering Year 4 \\ Medical Device Entrepreneurship Coursework, BIOE70014}
+\author{Moyu Honjo, Amy Li, Harsh Agraval, Michaela Jancovicova, Simi Brainch}
+\date{\today}
+\maketitle
+\vfill
+\thispagestyle{empty}
+
+\tableofcontents
+\thispagestyle{empty}
+\cleardoublepage
+\pagenumbering{arabic}
+\newpage
+%
+%
+\section{Unmet Need}
+
+\subsection{Disease}
+Congenital heart disease (CHD) is one of the most common structural abnormalities of the heart or intrathoracic great vessels that arise during fetal development. It affects approximately 8--10 live births per 1000. Particularly when lesions obstruct blood flow or require early intervention, CHD is associated with significant morbidity and mortality. It is estimated that approximately 35\% of infant deaths attributable to congenital malformations are associated with cardiovascular anomalies~\cite{CHDGeneral}.
+
+Figure~\ref{fig:chd_forms} shows two common forms of CHD involving vascular obstruction; Coarctation of the Aorta (CoA) and Pulmonary Artery Stenosis (PAS), and current treatment options for them~\cite{Salciccioli2023,Heaton2024}.
+
+\begin{figure}[h]
+  \centering
+  \fbox{\parbox{0.8\textwidth}{\centering\vspace{3cm}[PLACEHOLDER: Figure showing CoA and PAS with current treatment options]\vspace{3cm}}}
+  \caption{Two common forms of CHD involving vascular obstruction: Coarctation of the Aorta (CoA) and Pulmonary Artery Stenosis (PAS), and current treatment options.}
+  \label{fig:chd_forms}
+\end{figure}
+
+\subsection{Problem}
+Transcatheter stent implantation is the preferred therapy for many adolescents and adults with congenital heart disease (CHD). However, its use in infants and young children with pulmonary artery stenosis (PAS) or coarctation of the aorta (CoA) presents significant challenges.
+
+First, device size is a primary limitation. Existing stents and delivery systems were designed for adult anatomy and have not been engineered or tested for pediatric use. As a result, they lack features suited to small patients~\cite{Sullivan2025}. Adult stents and delivery catheters are often oversized for pediatric vasculature, increasing the risk of vascular injury. In the absence of pediatric-specific alternatives, these devices are frequently used off-label in infants and young children.
+
+Second, rapid growth during infancy and childhood presents a major long-term challenge. As children grow, vessel diameters increase, often exceeding 15--20 mm~\cite{Simi5}. Fixed-diameter stents cannot accommodate this growth and may become progressively restrictive, effectively creating a new obstruction to blood flow. This often necessitates repeat interventions, including catheter-based procedures or open-heart surgery, placing substantial physical, psychological, and financial burdens on patients and their families~\cite{Sullivan2025}.
+
+Finally, the fragility of infant vasculature further complicates stent implantation. Pediatric blood vessels are extremely small, thin, and fragile, making device delivery technically demanding. Catheters and stents must be small enough for safe navigation through narrow vessels while remaining strong enough to withstand high blood pressures and maintain vessel patency throughout growth. These challenges are frequently compounded in patients with prior cardiac surgery, where scar tissue and altered vascular anatomy further hinder catheter access and stent deployment~\cite{Sullivan2025}.
+
+\subsection{Introduction to the Product}
+The Minima\texttrademark{} stent system is the first stent that is specifically designed, tested, and FDA-approved for use in neonates, infants, and children with PAS or CoA.
+
+The system consists of a stent pre-mounted on a 6--8 mm balloon catheter and delivered through a low-profile, flexible, kink-resistant catheter with an outer diameter of <2 mm, making it suitable for infant vascular access. At initial implantation, the stent expands to diameters ranging from 5.1 to 8.5 mm, appropriate for small pediatric vessels. Importantly, the stent is designed to be re-expanded over time, accommodating somatic growth up to diameters of 24 mm~\cite{Simi5,RenataProducts}. (Figure~\ref{fig:minima})
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.9\textwidth]{minima_stent.png}
+  \caption{Minima Stent System. Figure adapted from~\cite{RenataProducts}.}
+  \label{fig:minima}
+\end{figure}
+
+Constructed from cobalt--chromium alloy, the stent provides high radial strength and long-term durability while maintaining flexibility for navigation through tortuous pediatric anatomy. The kink-resistant delivery system is engineered to maintain stability and trackability in complex vascular pathways~\cite{RenataProducts}. This design allows early initial implantation in infancy with planned, staged re-dilation as the child grows, reducing the need for repeated surgeries.
+
+\subsection{CHD Cost}
+Approximately 40,000 children undergo CHD surgery each year in the United States, at 120 pediatric cardiac programs. For individuals with complex congenital heart disease, the estimated annual national economic burden---including both direct and indirect costs---reaches approximately \$74 billion, with the cumulative lifetime impact across affected individuals exceeding \$3.35 trillion~\cite{CHDCost}.
+
+To further exemplify this trend, evidence from Arkansas~\cite{ArkansasCHD} shows that infants accounted for 72\% of all CHD-related hospital costs, resulting in paediatric hospitalisation expenses that are almost five times higher than those of adults.
+
+Of 188 families of children with CHD (weighted sample of 151,537 families), 48.9\% reported some financial hardship because of medical bills, with 17.0\% being unable to pay their medical bills at all. Recurrent hospitalisations, surgical procedures, and outpatient services create large expenditures for families of children with CHD~\cite{JAMA_CHD}.
+
+\subsection{CHD Global Epidemiology}
+Between 1990 and 2021, the global prevalence of CHD in children under five rose by 3.4\%, exceeding 4.18 million cases, underscoring the growing scale of the condition and its relevance to the CHD market.
+
+The Socio-Demographic Index (SDI), which reflects the level of socioeconomic development of a country or region, is closely associated with age-standardised CHD mortality, disability-adjusted life year (DALY), and prevalence rates. Regions with low and low-middle SDI consistently experience higher mortality and DALY rates, whereas high-SDI regions demonstrate substantially lower burdens.
+
+From a geographical perspective, South Asia recorded the highest number of CHD-associated cases, whereas Australasia reported the lowest. In contrast, Oceania exhibited the highest mortality and disability-adjusted life year (DALY) rates in 2021. These regional disparities highlight priority areas for targeted intervention and indicate key regions of focus for future developments and investment within the CHD market (Figure~\ref{fig:global})~\cite{CHDGlobal}.
+
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=0.85\textwidth]{epidemiology.png}
+  \caption{Global CHD epidemiology. Figure adapted from~\cite{CHDGlobalSpringer}.}
+  \label{fig:global}
+\end{figure}
+
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=0.85\textwidth]{global_prevalence.jpg}
+  \caption{Global CHD prevalence, deaths, and DALYs rates by country.}
+  \label{fig:global_prevalence}
+\end{figure}
+
+In conclusion, paediatric vascular stenosis poses distinct therapeutic challenges related to patient growth, anatomical considerations, and long-term durability. Conventional stents designed for adults are often unsuitable for this population. The Minima stent offers a purpose-built alternative that addresses these unmet needs by facilitating early intervention, accommodating somatic growth, and reducing the need for repeated surgical procedures.
+
+\section{Regulatory Landscape}
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=0.85\textwidth]{regulatory.pdf}
+  \caption{Summary of the regulatory approval process for the Minima Stent and Minima Delivery System. GLP denotes Good Laboratory Practice, which refers to quality standards for non-clinical safety studies. Although presented as a flowchart, the figure does not imply a strictly sequential process; several activities---particularly animal studies---may be conducted in parallel or in a different order. Standard testing requirements are detailed in Table~\ref{tab:regulatory}. Figure created using Napkin.}
+\end{figure}
+\clearpage
+
+
+\renewcommand{\arraystretch}{1.5} % Increases row height for readability
+
+\begin{longtable}{p{4.5cm} p{7cm} l}
+  \toprule
+  \textbf{Test}                                                              & \textbf{Animal/Method} & \textbf{Standard} \\
+  \midrule
+  \endfirsthead
+
+  % Header for next pages if table splits
+  \multicolumn{3}{c}%
+  {{\bfseries \tablename\ \thetable{} -- continued from previous page}}                                                   \\
+  \toprule
+  \textbf{Test}                                                              & \textbf{Animal/Method} & \textbf{Standard} \\
+  \midrule
+  \endhead
+
+  % Footer for split pages
+  \midrule
+  \multicolumn{3}{r}{{Continued on next page}}                                                                            \\
+  \bottomrule
+  \endfoot
+
+  % Footer for last page
+  \bottomrule
+  \endlastfoot
+
+  % ---------------- ASTM GROUP ----------------
+  \rowcolor{astm_color}
+  Haemolysis (Direct \& Extract Methods)                                     &
+  In vitro (human blood).                                                    &
+  ASTM                                                                                                                    \\
+  \midrule
+
+  \rowcolor{astm_color}
+  Stent recoil measurement                                                   &
+  Diameter change post-balloon deflation.                                    &
+  ASTM F2079                                                                                                              \\
+  \midrule
+
+  \rowcolor{astm_color}
+  Stent surface area characterisation                                        &
+  Geometric surface area calculation.                                        &
+  ASTM F2081                                                                                                              \\
+  \midrule
+
+  % ---------------- ISO GROUP ----------------
+  \rowcolor{iso_color}
+  Biological evaluation framework                                            &
+  Risk-based biological evaluation of a permanent, blood-contacting implant. &
+  ISO 10993-1                                                                                                             \\
+  \midrule
+
+  \rowcolor{iso_color}
+  Complement Activation                                                      &
+  In vitro (human serum) (C3a \& SC5b-9 markers).                            &
+  ISO 10993-4                                                                                                             \\
+  \midrule
+
+  \rowcolor{iso_color}
+  Heparinised Platelet \& Leukocyte Count                                    &
+  In vitro.                                                                  &
+  ISO 10993-4                                                                                                             \\
+  \midrule
+
+  \rowcolor{iso_color}
+  Partial Thromboplastin Time (PTT)                                          &
+  In vitro.                                                                  &
+  ISO 10993-4                                                                                                             \\
+  \midrule
+
+  \rowcolor{iso_color}
+  In Vivo Thrombogenicity                                                    &
+  Juvenile pigs (GLP).                                                       &
+  ISO 10993-4                                                                                                             \\
+  \midrule
+
+  \rowcolor{iso_color}
+  Cytotoxicity (Elution Method)                                              &
+  In vitro (L929 cells): In vitro cell culture assay.                        &
+  ISO 10993-5                                                                                                             \\
+  \midrule
+
+  \rowcolor{iso_color}
+  Implantation Study                                                         &
+  Juvenile pigs (GLP).                                                       &
+  ISO 10993-6                                                                                                             \\
+  \midrule
+
+  \rowcolor{iso_color}
+  Sensitisation (Maximisation Test)                                          &
+  Guinea pigs.                                                               &
+  ISO 10993-10                                                                                                            \\
+  \midrule
+
+  \rowcolor{iso_color}
+  Intracutaneous Reactivity                                                  &
+  Rabbits (intracutaneous injection).                                        &
+  ISO 10993-10                                                                                                            \\
+  \midrule
+
+  \rowcolor{iso_color}
+  Acute Systemic Toxicity                                                    &
+  Mice (systemic injection study).                                           &
+  ISO 10993-11                                                                                                            \\
+  \midrule
+
+  \rowcolor{iso_color}
+  Subacute \& Subchronic Toxicity                                            &
+  Juvenile pigs (GLP).                                                       &
+  ISO 10993-11                                                                                                            \\
+  \midrule
+
+  \rowcolor{iso_color}
+  Genotoxicity / Carcinogenicity                                             &
+  In silico toxicological risk assessment.                                   &
+  ISO 10993-17 \& -18                                                                                                     \\
+  \midrule
+
+  \rowcolor{iso_color}
+  Ethylene oxide sterilisation validation                                    &
+  EO sterilisation process validation.                                       &
+  ISO 11135:2014                                                                                                          \\
+  \midrule
+
+  % ---------------- USP GROUP ----------------
+  \rowcolor{usp_color}
+  Material-Mediated Pyrogenicity                                             &
+  Rabbits. Pyrogen testing for fever-inducing substances.                    &
+  USP rabbit pyrogen test                                                                                                 \\
+  \midrule
+  \bottomrule
+  \caption{Biological Evaluation and Testing Matrix (Sorted by Standard)}
+  \label{tab:regulatory}
+\end{longtable}
+
+\section{Fundraising}
+Renata's disclosures regarding its fundraising history are convoluted and lack full transparency; as a result, the figures presented below may contain inconsistencies. The company's earliest financing appears to have been an undisclosed seed round structured as a \textbf{convertible note}\footnote{A convertible note is a short-term debt instrument that converts into equity at a later financing round, typically at a discount or valuation cap rather than being repaid in cash.}. Although no formal seed announcement was made, subsequent Series A disclosures indicate that existing debt—presumed to be this convertible instrument—was converted into preferred equity as part of the Series A financing.
+
+In September 2020, the company announced a \textbf{Series A} round with a stated size of \textbf{\$5.25M}, structured as a multi-tranche priced equity financing. This included the conversion of undisclosed seed convertible debt into Series A preferred stock, \$3.2M in new capital raised across the first two tranches, and a planned \$2.05M third tranche. However, the company's September 23, 2020 SEC filing reports that only \$4.35M had been raised at that time, suggesting the final tranche was ongoing or undersubscribed.
+
+In June 2022, the company announced a \textbf{Series B} round targeting \textbf{\$12.0M}. SEC filings indicate that \$11.557M had been raised by the time of disclosure, leaving approximately \$0.442M unraised. This suggests the round was largely completed. The transaction was reported in a Form D filed on June 10, 2022.
+
+On July 31, 2024, the company announced a \textbf{Series C} round with a stated size of \textbf{\$11.0M}, representing a decrease relative to the prior Series B. Such a reduction may be viewed negatively for a later-stage priced equity round. No corresponding SEC filing was identified, suggesting the round may be ongoing, privately structured, or incompletely disclosed.
+
+In aggregate, the company has raised approximately \textbf{\$28.25M} in venture capital, excluding the undisclosed seed financing: \$5.25M from Series A, \$12.0M from Series B, and \$11.0M from Series C. However, alternative sources report total funding of \$27.6M, a discrepancy likely explained by the effective reduction of the Series A round from its announced \$5.25M to the \$4.35M reported in SEC filings.
+
+\section{Reimbursement}
+
+In the United States, the Minima\texttrademark{} Stent System is reimbursed within the Medicare Inpatient Prospective Payment System (IPPS) using Medicare Severity Diagnosis-Related Group (MS-DRG)–based bundled payments~\cite{Simi1}. Under this framework, hospitals receive a single fixed payment per inpatient admission, intended to cover all hospital costs associated with the procedure, including implantable devices, catheterisation, laboratory resources, nursing care, and inpatient stay, while physician professional fees are reimbursed separately under the Physician Fee Schedule.
+
+MS-DRGs classify inpatient admissions into groups based on the principal diagnosis, procedures performed, and the presence of complications or comorbidities, with higher-severity cases receiving higher reimbursement. Importantly, the payment is not itemised by device, meaning hospitals must absorb the cost of implantable technologies within the predetermined DRG payment unless supplemental reimbursement applies.
+
+For inpatient Minima procedures, hospital reimbursement typically falls within MS-DRGs for ``Other Vascular Procedures'', most commonly~\cite{Simi2}:
+\begin{itemize}
+  \item MS-DRG 252 (with major complications/comorbidities),
+  \item MS-DRG 253 (with complications/comorbidities), or
+  \item MS-DRG 254 (without complications/comorbidities).
+\end{itemize}
+
+For Fiscal Year 2025, the average estimated Medicare payments across these DRGs range from \$17,125 to \$32,247 per admission, depending on patient severity~\cite{Simi2}. These bundled payments historically did not adequately reflect the cost of advanced paediatric implantable technologies such as Minima, particularly in the context of complex congenital heart disease, where 31\% of total lifetime costs are incurred within the first five years of life~\cite{Simi7}. To address this gap, in August 2025, the Centres for Medicare \& Medicaid Services (CMS) granted Minima a New Technology Add-On Payment (NTAP) for Fiscal Year 2026, effective October 1, 2025. Under this ruling, hospitals may receive up to \$22,685 in additional reimbursement per eligible inpatient case, paid on top of the applicable MS-DRG amount~\cite{Simi3}.
+
+CMS further acknowledged the difficulty of evaluating paediatric technologies using Medicare claims data, noting that although Medicare-covered paediatric cases are rare, Minima addresses complex, high-acuity congenital heart disease that justifies supplemental inpatient reimbursement~\cite{Simi4}. This is particularly relevant given that complex congenital heart disease accounts for approximately 15\% of all paediatric hospitalisation costs in the United States~\cite{Simi7}. The NTAP mechanism reimburses up to 65\% of the difference between hospital costs and the MS-DRG payment, capped at the established maximum~\cite{Simi3}, thereby substantially reducing the financial risk to hospitals during early adoption.
+
+From a reimbursement perspective, the award of NTAP is highly unusual for a paediatric cardiovascular device and represents strong payer validation of Minima's clinical and economic impact.
+
+\subsection{Healthcare Economics Case}
+
+The healthcare economics case for the Minima stent is supported by both early clinical performance data and explicit CMS recognition of unmet economic need.
+
+In the multicentre early feasibility study, the stent was successfully implanted in 100\% of patients (10/10), with all cases demonstrating a >50\% increase in angiographic vessel diameter immediately following implantation~\cite{Simi5}.
+
+From a cost perspective, several findings are particularly relevant:
+\begin{itemize}
+  \item No deaths or major adverse events were reported,
+  \item 0\% stent explantation, migration, or embolisation at 30 days and 6 months,
+  \item No unplanned surgical interventions or re-interventions at a median follow-up of approximately 12 months.
+\end{itemize}
+
+Avoidance of surgery is economically significant in paediatric congenital heart disease, where open surgical repair is associated with prolonged intensive care stays, high perioperative costs, and substantial downstream follow-up expenditure. The average lifetime economic burden of complex congenital heart disease has been estimated at \$2.1 million per patient, with early invasive interventions being a major cost driver~\cite{Simi7}. 50\% of patients underwent planned elective stent re-dilation to accommodate somatic growth, all without complications~\cite{Simi5}. This highlights how the Minima\texttrademark{} Stent System can contribute to avoidance of surgery as the child grows.
+
+The CMS NTAP decision further strengthens this economic case. CMS conducted a formal cost analysis and public comment review, concluding that existing MS-DRG payments do not adequately reflect the costs associated with Minima implantation in complex paediatric cases. The \$22,685 NTAP add-on payment directly addresses this reimbursement shortfall, improving hospital incentives and supporting adoption within tertiary paediatric centres during early commercialisation~\cite{Simi3}.
+
+Importantly, Minima previously received FDA Breakthrough Device designation and FDA Premarket Approval (August 28, 2024)~\cite{Simi6}, reinforcing payer confidence that the technology offers meaningful clinical improvement over off-label or surgical alternatives. Taken together, Minima's health economic profile is characterised by reduced lifetime procedural burden, lower risk of costly surgical escalation, and improved alignment between reimbursement and true cost of care.
+
+\section{Intellectual Property}
+\fbox{\parbox{0.9\textwidth}{\centering IP active in US, EU, CN, JP, AU, CA, ES, KR, IL, etc.}}
+
+\subsection{Patent Portfolio Overview}
+Minima\texttrademark{} is protected by a portfolio of six granted US patents and one pending continuation application, all claiming priority to a provisional filing dated 28 February 2019. The primary inventors, Dustin Armor and Eason Abbott, developed the core growth-stent technology under assignment to Renata Medical Inc. The US patent family has been deliberately extended through a continuation strategy spanning more than five years, with filings progressing chronologically from 2019 through 2024. This approach reflects Renata's systematic effort to capture multiple embodiments, delivery methods, clinical use cases, and technical refinements---all within a single priority date---rather than pursuing isolated patents around incremental variations. The portfolio is complemented by international filings across 15 jurisdictions, including published and granted patents in South Korea and Israel, signalling Renata's commitment to protecting the growth-stent platform globally.
+
+\subsection{US Patent Grants and Continuation Chain}
+The foundational patent, US 10,702,407, was granted on 07 July 2020 from application US 16/441,201 (filed 14 June 2019). This grant established core claims covering a self-expanding nitinol stent capable of safe deployment in neonatal vessels (below 2 mm in diameter) and subsequent re-expansion to adult dimensions (exceeding 18 mm) whilst maintaining structural integrity and predictable geometry throughout the expansion range.
+
+Renata subsequently filed six continuation applications from the same 28 February 2019 priority date, resulting in the following grants:
+\begin{itemize}
+  \item US 10,893,962 (filed 18 May 2020; granted 19 Jan 2021)
+  \item US 11,291,571 (filed 10 December 2020; granted 5 April 2021)
+  \item US 11,534,319 (filed 17 February 2022; granted 27 December 2022)
+  \item US 11,839,560 (filed 17 November 2022; granted 12 December 2023)
+  \item US 12,076,256 B2 (filed 3 November 2023; granted 03 September 2024)---most recent grant
+\end{itemize}
+
+The final continuation, US 18/783,153, filed on 24 July 2024, has been abandoned. The progression of these filings demonstrates disciplined prosecution addressing competitor pressure, internal product refinements based on clinical feedback, and potential valve-related extensions. The most recent grant, US 12,076,256 B2, issued only 15 months ago, confirming that Renata continues active prosecution midway through the anticipated patent term (expiring 14 June 2039).
+
+\subsection{Independent Claims and Technical Scope}
+Claim 1 across this family defines a ``catheter-insertable and re-expandable growth stent'' wherein frame struts form intermediate cells and strut junctions that enable controlled, multi-stage expansion. The claim explicitly requires the stent to maintain ``radial strength and alignment'' when expanding from an initial crimped state to a second stable expanded state with a cross-section ``between five and six-tenths times and seven and one-half times'' the initial diameter. This precise 5.6--7.5× expansion ratio directly solves the technical problem: conventional paediatric stents cannot safely expand from neonatal to adult diameters without compromising radial force or causing vessel trauma.
+
+Dependent claims capture specific embodiments: arcuate members at strut junctions providing axial flexibility for navigation through tortuous anatomy; thinned proximal and distal end regions minimising vessel penetration; uniform strut widths optimised via engineering formulas for simultaneous crimpability and fatigue resistance; and optional blood-impermeable coverings supporting valve integration. This tiered claim structure creates multiple layers of protection, making it difficult for competitors to design around core claims without infringing or accepting significant performance trade-offs.
+
+\subsection{International Patent Coverage}
+Worldwide filings span the US, European Patent Office (EP), China (CN), Japan (JP), South Korea (KR), Australia (AU), Canada (CA), Israel (IL), Spain (ES), Portugal (PT), Chile (CL), Mexico (MX), and the Eurasian Patent Office (EA). A published Korean patent, KR20220027258A (published 9 March 2022), and an Israeli grant, IL305385B1 (granted 1 May 2024), demonstrate active enforcement outside North America. This geographic distribution reflects Renata's strategic assessment: established paediatric cardiology centres in North America and Western Europe; emerging markets with rising congenital heart disease incidence; and jurisdictions home to potential acquirers with global infrastructure. Renata's use of the PCT (Patent Cooperation Treaty) route enabled cost-efficient international protection whilst preserving flexibility to prioritise markets at the 30-month national-phase decision point.
+
+\subsection{Trade Marks}
+The Minima\texttrademark{} trademark and Renata Medical branding are registered or claimed across key commercial territories, providing indefinite renewal protection under continuous use. These marks distinguish the device in clinical settings and support brand recognition amongst interventional cardiologists and hospital procurement teams. Trademark protection is particularly valuable in the paediatric congenital market, where clinician trust and familiarity drive adoption decisions independent of patent status. The marks also provide a mechanism to enforce against confusingly similar competitor products, even after core utility patents expire.
+
+\subsection{Design Rights}
+Design registrations protect the stent's distinctive long-strut geometry, strut pattern arrangement, and the ergonomic profile of the delivery system catheter hub. Unlike patents, design rights do not require proof of copying for enforcement and can be obtained relatively quickly and at modest cost. This protection prevents direct visual imitation of Minima's recognisable appearance, creating an additional barrier to market entry for competitors seeking to replicate the device's clinical and aesthetic identity.
+
+\subsection{Trade Secrets}
+Proprietary manufacturing know-how forms a critical layer of protection distinct from patented claims. Trade secrets encompass precise nitinol alloy compositions, heat-treat cycles, surface-finishing protocols, crimping parameters, and internal design algorithms governing safe expansion windows for each vessel diameter. This information is more defensible as confidential know-how than disclosed in patent specifications, and provides protection extending indefinitely so long as secrecy is maintained. Manufacturing trade secrets are particularly valuable for a paediatric device, where process tolerances are exceptionally tight and process deviations could compromise clinical safety.
+
+\subsection{Copyright and Regulatory Data Exclusivity}
+Copyright automatically protects instructions for use, procedural checklists, training materials, clinician educational content, and digital interfaces, preventing direct reproduction of Renata's supporting materials. Regulatory data exclusivity for paediatric indications prevents competitors from relying on Renata's GROWTH pivotal trial data and supporting preclinical studies in their own regulatory submissions, forcing independent replication of clinical evidence and extending competitive advantage well beyond patent expiration.
+
+\printbibliography[]
+
+\end{document}
